@@ -1,0 +1,18 @@
+# GitLab Pages: builds the site on every push to the default branch and publishes it.
+# The build uses relative asset paths, so it works at https://<namespace>.gitlab.io/<project>/
+# and on a Pages unique domain alike. SITE_URL only fills canonical and Open Graph URLs.
+image: node:22-alpine
+
+pages:
+  stage: deploy
+  variables:
+    SITE_URL: $CI_PAGES_URL
+  script:
+    - npm ci
+    - npm run build
+    - rm -rf public && mv dist public
+  artifacts:
+    paths:
+      - public
+  rules:
+    - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH

@@ -1,0 +1,33 @@
+{
+  "name": "fatemeh-shiri-portfolio",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "npm run check && vite build && npm run build:ssr && node scripts/prerender.mjs dist",
+    "build:standalone": "vite build --mode standalone && npm run build:ssr && node scripts/prerender.mjs dist-standalone && node scripts/copy-standalone.mjs",
+    "build:ssr": "vite build --ssr src/entry-server.tsx --outDir .ssr --emptyOutDir",
+    "preview": "vite preview --port 4173",
+    "check": "tsc -b && node scripts/check-text.mjs",
+    "check:text": "node scripts/check-text.mjs"
+  },
+  "dependencies": {
+    "@fontsource-variable/bricolage-grotesque": "^5.3.0",
+    "@fontsource-variable/instrument-sans": "^5.3.0",
+    "@fontsource-variable/vazirmatn": "^5.3.0",
+    "react": "^19.3.0",
+    "react-dom": "^19.3.0"
+  },
+  "devDependencies": {
+    "@tailwindcss/vite": "^4.3.3",
+    "@types/node": "^26.6.5",
+    "@types/react": "^19.3.0",
+    "@types/react-dom": "^19.3.0",
+    "@vitejs/plugin-react": "^6.1.2",
+    "tailwindcss": "^4.3.3",
+    "typescript": "^7.0.2",
+    "vite": "^8.3.4",
+    "vite-plugin-singlefile": "^2.3.3"
+  }
+}

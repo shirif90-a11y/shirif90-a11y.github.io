@@ -1,0 +1,8 @@
+node_modules
+dist
+dist-standalone
+.ssr
+*.log
+.DS_Store
+preview
+*.tsbuildinfo
